@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Art Gallery | Stick Arc</title>
+
+<style>
+body{
+  margin:0;
+  background:#0f0f0f;
+  color:white;
+  font-family:Arial;
+}
+h1{
+  text-align:center;
+  margin:20px 0;
+}
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;
+  padding:20px;
+}
+.card{
+  background:#1c1c1c;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 0 10px rgba(0,0,0,0.4);
+}
+.card img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+}
+.card .info{
+  padding:10px;
+}
+.card .info h3{
+  margin:0;
+  font-size:16px;
+}
+.card .info p{
+  margin:4px 0;
+  font-size:13px;
+  opacity:0.8;
+}
+.card button{
+  width:100%;
+  border:none;
+  padding:8px;
+  background:#ff4444;
+  color:white;
+  cursor:pointer;
+  border-radius:0 0 14px 14px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎨 Art Gallery</h1>
+
+<div class="gallery" id="gallery"></div>
+<img src="${art.imageURL}" onclick="openArtist('${art.username}')">
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getFirestore, collection, query, where, onSnapshot, updateDoc, doc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+const app = initializeApp({
+  apiKey:"AIzaSyAIgpVbHc_xdeTb02V_KE13MvxTmWKOSLM",
+  authDomain:"stickarc-dcbc9.firebaseapp.com",
+  projectId:"stickarc-dcbc9"
+});
+
+const db = getFirestore(app);
+const gallery = document.getElementById("gallery");
+
+const q = query(
+  collection(db,"submissions"),
+  where("approved","==",true)
+);
+function openArtist(username){
+  location.href = "artist.html?user=" + username;
+}
+
+onSnapshot(q, snap=>{
+  gallery.innerHTML="";
+  snap.forEach(docu=>{
+    const art = docu.data();
+
+    const card = document.createElement("div");
+    card.className="card";
+    card.innerHTML=`
+      <img src="${art.imageURL}">
+      <div class="info">
+        <h3>${art.title}</h3>
+        <p>by ${art.username || "Unknown Artist"}</p>
+      </div>
+      <button>🚩 Report</button>
+    `;
+
+    // REPORT BUTTON
+    card.querySelector("button").onclick = async ()=>{
+      await updateDoc(doc(db,"submissions",docu.id),{
+        reported:true
+      });
+      alert("Reported ✔");
+    };
+
+    gallery.appendChild(card);
+  });
+});
+</script>
+
+</body>
+</html>
