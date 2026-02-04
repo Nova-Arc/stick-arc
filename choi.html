@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Stick Arc</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.ico.png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- 🔴 RED STICK ARC SECTION (PAGE START) -->
+    <div class="top-image" id="stickarc">
+        <img src="logoc.png" alt="Top Banner">
+    </div>
+
+    
+
+    <!-- 🔍 SEARCH BOX (JUST ABOVE REQUEST) -->
+    <div class="search-box" >
+        <input 
+            type="text"
+            id="searchInput"
+            placeholder="Search character..."
+            onkeyup="filterCharacters()"
+        >
+    </div>
+
+    <!-- 📨 REQUEST BUTTON -->
+    <div class="request-box" id="requestBox">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeyWUYdP-R9U8lZIP6-XqKtxMQgrnW8NkwdzADHRsB-BCYeow/viewform"
+            class="request-btn">
+            Won’t find your character? Request it here!
+        </a>
+    </div>
+
+<div class="request-image">
+    <img src="hub.png" alt="Request Banner">
+
+    <!-- LEFT VIDEO -->
+    <video class="side-video left"
+           src="gri.mp4"
+           autoplay
+           loop
+           muted
+           playsinline>
+    </video>
+
+    <!-- YT BUTTON -->
+    <a href="https://www.youtube.com/@choiyucks"
+       target="_blank"
+       class="yt-btn">
+        <img src="yt.png" alt="YouTube Button">
+    </a>
+
+    <!-- RIGHT VIDEO -->
+    <video class="side-video right"
+           src="fr.mp4"
+           autoplay
+           loop
+           muted
+           playsinline>
+    </video>
+</div>
+
+
+
+
+    <!-- 🟢 CHARACTERS SECTION -->
+    <div class="characters-section">
+
+        <img src="bgp.png" class="bg-image" alt="Characters Background">
+
+        <div class="characters-grid">
+
+            <a href="god-zarek.html" class="character">
+                <img class="idle" src="GodZarekPack.png">
+                <img class="hover" src="cp11.png">
+                <span>God Zarek</span>
+            </a>
+
+            <a href="god-kytchu.html" class="character">
+                <img class="idle" src="GodKytchuPack.png">
+                <img class="hover" src="cp22.png">
+                <span>God Kytchu</span>
+            </a>
+<a href="giants.html" class="character">
+                <img class="idle" src="GiantsPack.png">
+                <img class="hover" src="cp33.png">
+                <span>Giants</span>
+            </a>
+            <a href="fire-golden-griffon.html" class="character">
+                <img class="idle" src="GoldenGriffonV2Pack.png">
+                <img class="hover" src="cp44.png">
+                <span>Fire Golden Griffon</span>
+            </a>
+            <a href="c-vamp-griffon.html" class="character">
+                <img class="idle" src="VampGriffonPack.png">
+                <img class="hover" src="cp55.png">
+                <span>Vamp Griffon</span>
+            </a>
+            <a href="fire-voltaic-finalboss.html" class="character">
+                <img class="idle" src="cp6.png">
+                <img class="hover" src="cp66.png">
+                <span>Fire Voltaic Finalboss</span>
+            </a>
+             <a href="fire-finalboss.html" class="character">
+                <img class="idle" src="FinalBossV2Pack.png">
+                <img class="hover" src="cp77.png">
+                <span>Fire Final boss</span>
+            </a>
+             <a href="fireboss.html" class="character">
+                <img class="idle" src="FireBossV1Pack.png">
+                <img class="hover" src="cp88.png">
+                <span>Fire boss</span>
+            </a>
+            <a href="statues.html" class="character">
+                <img class="idle" src="StatuesPack.png">
+                <img class="hover" src="cp99.png">
+                <span>Statues</span>
+            </a>
+            <a href="god-voltaic-spearton.html" class="character">
+                <img class="idle" src="cp10.png">
+                <img class="hover" src="cp1010.png">
+                <span>God Voltaic Spearton</span>
+            </a>
+            <a href="sire-spearos.html" class="character">
+                <img class="idle" src="cp11a.png">
+                <img class="hover" src="cp11a11a.png">
+                <span>Fire Spearos</span>
+            </a>
+            <a href="c-speartons.html" class="character">
+                <img class="idle" src="SpeartonsPack.png">
+                <img class="hover" src="cp1212.png">
+                <span>Speartons</span>
+            </a>
+            <a href="maps.html" class="character">
+                <img class="idle" src="cp13.png">
+                <img class="hover" src="cp1313.png">
+                <span>Maps</span>
+            </a>
+            <a href="Savage-fb.html" class="character">
+                <img class="idle" src="SavageFinalBossPack.png">
+                <img class="hover" src="1r.png">
+                <span>Savage Finalboss</span>
+            </a>
+            <a href="golden-g.html" class="character">
+                <img class="idle" src="GoldenGriffonPack.png">
+                <img class="hover" src="2r.png">
+                <span>Golden Griffon</span>
+            </a>
+            <a href="c-lg.html" class="character">
+                <img class="idle" src="LavaGriffonPack.png">
+                <img class="hover" src="3r.png">
+                <span>Lava Griffon</span>
+            </a>
+            <a href="savage-g.html" class="character">
+                <img class="idle" src="SavageGriffonPack.png">
+                <img class="hover" src="4r.png">
+                <span>Savage Griffon</span>
+            </a>
+            <a href="golden-spearton.html" class="character">
+                <img class="idle" src="GodGoldenSpeartonV1Pack.png">
+                <img class="hover" src="5r.png">
+                <span>God Golden Spearton</span>
+            </a>
+            <a href="leaf-fb.html" class="character">
+                <img class="idle" src="LeafFinalBossPack.png">
+                <img class="hover" src="6r.png">
+                <span>Leaf Finalboss</span>
+            </a>
+            <a href="magickill.html" class="character">
+                <img class="idle" src="MagikillsPack.png">
+                <img class="hover" src="7r.png">
+                <span>Magkills</span>
+            </a>
+            <a href="Jug.html" class="character">
+                <img class="idle" src="JuggerknightPack.png">
+                <img class="hover" src="8r.png">
+                <span>JuggerKnight</span>
+            </a>
+            <a href="miner.html" class="character">
+                <img class="idle" src="MinersPack.png">
+                <img class="hover" src="9r.png">
+                <span>Miner</span>
+            </a>
+            <a href="ice-g.html" class="character">
+                <img class="idle" src="IceGriffonPack.png">
+                <img class="hover" src="10r.png">
+                <span>Ice Griffon</span>
+            </a>
+            <a href="king-fb.html" class="character">
+                <img class="idle" src="KingFireFinalBossPack.png">
+                <img class="hover" src="11r.png">
+                <span>King Fire Finalboss</span>
+            </a>
+            
+        </div>
+    </div>
+
+<!-- 🎥 TUTORIAL SECTION -->
+<div class="tutorial-section" id="tutorial">
+
+    <h2 class="tutorial-title">Animation Tutorial</h2>
+
+    <div class="tutorial-video-box custom-thumb" id="ytBox">
+
+        <!-- THUMBNAIL -->
+        <img src="thumb1.png" class="yt-thumb" id="ytThumb">
+
+        <!-- PLAY BUTTON -->
+        <div class="play-btn" id="playBtn">▶</div>
+
+        <!-- YOUTUBE IFRAME -->
+        <iframe
+            id="ytFrame"
+            src="https://www.youtube.com/embed/3UUen1QSj84"
+            title="Animation Tutorial"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+        </iframe>
+
+    </div>
+
+    <p class="tutorial-desc">
+        Learn how to animate Stick Arc characters step by step.
+    </p>
+
+</div>
+
+
+
+
+
+    <!-- 📌 AUTO SCROLL TO RED SECTION -->
+    <script>
+        window.onload = function () {
+            document.getElementById("stickarc")
+                .scrollIntoView({ behavior: "instant" });
+        };
+    </script>
+
+    <!-- 🔍 SEARCH LOGIC -->
+    <script>
+        function filterCharacters() {
+            const input = document.getElementById("searchInput");
+            const filter = input.value.toLowerCase();
+            const characters = document.querySelectorAll(".character");
+
+            characters.forEach(char => {
+                const name = char.querySelector("span").textContent.toLowerCase();
+                char.style.display = name.includes(filter) ? "block" : "none";
+            });
+        }
+    </script>
+   <!-- 🔐 FIREBASE AUTH -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAIgpVbHc_xdeTb02V_KE13MvxTmWKOSLM",
+            authDomain: "stickarc-dcbc9.firebaseapp.com",
+            projectId: "stickarc-dcbc9"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        const inboxBtn = document.getElementById("inboxBtn");
+        const searchUserBtn = document.getElementById("searchUserBtn");
+        const requestBox = document.getElementById("requestBox");
+
+        onAuthStateChanged(auth, (user) => {
+            if (!user) {
+                inboxBtn.href = "login.html";
+                searchUserBtn.href = "login.html";
+                requestBox.querySelector("a").href = "login.html";
+            }
+        });
+    </script>
+    <script>
+const thumb = document.getElementById("ytThumb");
+const playBtn = document.getElementById("playBtn");
+const frame = document.getElementById("ytFrame");
+
+function playVideo() {
+    thumb.style.display = "none";
+    playBtn.style.display = "none";
+
+    // 🔥 FRESH SRC SET (no +=)
+    frame.src = "https://www.youtube.com/embed/3UUen1QSj84?autoplay=1&rel=0";
+}
+
+thumb.addEventListener("click", playVideo);
+playBtn.addEventListener("click", playVideo);
+</script>
+
+
+
+    <!-- 🦶 FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p>Special thanks to our ❤️ Supporters</p>
+
+            <div class="footer-brand">
+                <h3>Stick Arc</h3>
+                <p>
+                    Free characters & animations for students, animators,
+                    and creative developers.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <h4>Legal</h4>
+                <a href="about.html">About Us</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms & Conditions</a>
+            </div>
+
+            <div class="footer-links">
+    <h4>Legal</h4>
+    <a href="about.html">About Us</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms & Conditions</a>
+    <a href="comment-policy.html">Comment Policy</a>
+</div>
+
+
+        </div>
+
+        <div class="footer-bottom">
+            © <span id="year"></span> Stick Arc. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+    </script>
+<script>
+const footer = document.querySelector('.site-footer');
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            footer.classList.add('show');
+        }
+    });
+});
+
+observer.observe(footer);
+</script>
+
+</body>
+</html>
