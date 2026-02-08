@@ -4,7 +4,161 @@
 <meta charset="UTF-8">
 <title>User Profile | Stick Arc</title>
 <link rel="icon" href="favicon.ico.png">
-<link rel="stylesheet" href="atp.css">
+<style>
+/* 🌑 RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
+
+body{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:
+    radial-gradient(circle at top, rgba(255,200,100,.28), transparent 55%),
+    radial-gradient(circle at bottom, rgba(255,120,0,.38), transparent 60%),
+    #050200;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont;
+  color:#ffe8c6;
+}
+
+/* 🪪 PROFILE CARD (BIG) */
+.profile-card{
+  width:96%;
+  max-width:540px;
+  background:rgba(12,6,0,.8);
+  border-radius:26px;
+  overflow:hidden;
+  box-shadow:
+    0 0 40px rgba(255,190,90,.5),
+    0 0 90px rgba(255,130,30,.3),
+    inset 0 0 26px rgba(255,220,140,.18);
+  border:1px solid rgba(255,220,140,.35);
+}
+
+/* 🖼️ COVER */
+.cover{
+  height:140px;
+  background:
+    linear-gradient(135deg,#ffb347,#ff7a00);
+  box-shadow:
+    inset 0 0 40px rgba(255,255,255,.25),
+    0 0 35px rgba(255,140,40,.9);
+}
+
+/* 👤 MAIN PROFILE */
+.profile-main{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  padding:26px 22px 10px;
+}
+
+/* 👑 AVATAR (TRANSPARENT SAFE) */
+.avatar{
+  width:130px;
+  height:130px;
+  border-radius:50%;
+  object-fit:cover;
+  background:transparent;
+  filter:
+    drop-shadow(0 0 12px rgba(255,220,140,.95))
+    drop-shadow(0 0 30px rgba(255,150,40,1))
+    drop-shadow(0 0 60px rgba(255,90,0,.9));
+}
+
+/* 🧾 TEXT AREA */
+.text{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+/* 🏷️ USERNAME */
+.username{
+  font-size:1.9rem;
+  font-weight:700;
+  color:#ffd98a;
+  text-shadow:
+    0 0 10px rgba(255,210,130,.9),
+    0 0 28px rgba(255,140,40,1);
+}
+
+/* 🎖️ BADGE */
+.badge{
+  align-self:flex-start;
+  padding:6px 14px;
+  border-radius:14px;
+  font-size:.95rem;
+  font-weight:600;
+  color:#2b1500;
+  background:
+    linear-gradient(145deg,#ffe19a,#ffb13b);
+  box-shadow:
+    0 0 10px rgba(255,190,90,.9),
+    0 0 22px rgba(255,130,30,.9);
+}
+
+/* 📝 BIO */
+.bio{
+  margin:16px 22px 22px;
+  padding:18px;
+  font-size:1.15rem;
+  line-height:1.45;
+  background:rgba(0,0,0,.55);
+  border-radius:18px;
+  border:1px solid rgba(255,210,130,.35);
+  box-shadow:
+    inset 0 0 16px rgba(255,170,70,.2),
+    0 0 22px rgba(255,130,30,.25);
+}
+
+/* 🔘 ACTION BUTTON (BIG) */
+.action-btn{
+  display:block;
+  width:calc(100% - 44px);
+  margin:0 auto 26px;
+  padding:18px;
+  border:none;
+  border-radius:22px;
+  font-size:1.25rem;
+  font-weight:700;
+  color:#2b1500;
+  background:
+    linear-gradient(145deg,#ffd98c,#ff9c2a);
+  box-shadow:
+    0 0 20px rgba(255,190,90,1),
+    0 0 50px rgba(255,130,30,1),
+    inset 0 0 16px rgba(255,255,255,.4);
+  cursor:pointer;
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+
+.action-btn:active{
+  transform:scale(.96);
+  box-shadow:
+    0 0 16px rgba(255,170,60,.9),
+    0 0 36px rgba(255,110,0,.9);
+}
+
+/* 📱 SMALL SCREENS */
+@media(max-width:380px){
+  .avatar{
+    width:110px;
+    height:110px;
+  }
+  .username{
+    font-size:1.65rem;
+  }
+  .bio{
+    font-size:1.05rem;
+  }
+}
+</style>
 
 
 </head>
