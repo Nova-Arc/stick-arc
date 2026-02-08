@@ -7,39 +7,127 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
+<style>
+/* ===================== */
+/* 🔥 GOLDEN FIRE THEME */
+/* ===================== */
+
+*{
+  box-sizing:border-box;
+}
+
 body{
-  background:#111;
-  color:white;
-  font-family:Arial;
+  margin:0;
+  height:100vh;
   display:flex;
   justify-content:center;
   align-items:center;
-  height:100vh;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont;
+  color:#fff;
+
+  background:
+    radial-gradient(circle at top, rgba(255,160,60,.25), transparent 45%),
+    radial-gradient(circle at bottom, rgba(255,90,0,.25), transparent 50%),
+    linear-gradient(180deg, #0b0502, #120700, #080300);
 }
+
+/* 🔥 MAIN BOX */
 .box{
-  background:#1c1c1c;
-  padding:25px;
-  border-radius:12px;
   width:320px;
+  padding:26px 22px;
+  border-radius:16px;
   text-align:center;
+
+  background:
+    linear-gradient(180deg, rgba(40,20,5,.9), rgba(15,7,2,.95));
+  
+  border:1px solid rgba(255,140,40,.35);
+
+  box-shadow:
+    0 0 25px rgba(255,120,30,.25),
+    inset 0 0 18px rgba(255,180,80,.08);
 }
+
+/* 🔥 TITLE */
+.box h2{
+  margin:0 0 6px;
+  font-size:22px;
+  letter-spacing:.5px;
+
+  background:linear-gradient(90deg,#ffd27a,#ff9c2a,#ffd27a);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+/* 🔥 SUBTEXT */
+.box p{
+  margin:0 0 18px;
+  font-size:13px;
+  color:#ffcf9a;
+  opacity:.9;
+}
+
+/* 🔥 INPUT */
 input{
   width:100%;
-  padding:12px;
-  border-radius:8px;
-  border:none;
-  margin-bottom:12px;
+  padding:12px 14px;
+  border-radius:10px;
+  border:1px solid rgba(255,150,60,.4);
+  outline:none;
+  background:#120700;
+  color:#fff;
+  font-size:14px;
+
+  box-shadow:
+    inset 0 0 10px rgba(255,120,40,.15);
 }
+
+input::placeholder{
+  color:#ffb870;
+  opacity:.7;
+}
+
+input:focus{
+  border-color:#ff9c2a;
+  box-shadow:
+    0 0 10px rgba(255,140,40,.6),
+    inset 0 0 12px rgba(255,180,80,.25);
+}
+
+/* 🔥 BUTTON */
 button{
   width:100%;
+  margin-top:14px;
   padding:12px;
-  background:#ff6a00;
   border:none;
-  color:white;
-  border-radius:8px;
-  font-weight:bold;
+  border-radius:12px;
   cursor:pointer;
+  font-weight:700;
+  font-size:15px;
+  color:#2b1200;
+
+  background:
+    linear-gradient(180deg,#ffd27a,#ff9c2a,#ff7a00);
+
+  box-shadow:
+    0 6px 18px rgba(255,120,30,.45),
+    inset 0 -2px 6px rgba(160,60,0,.4);
+
+  transition:.25s ease;
 }
+
+button:hover{
+  transform:translateY(-1px);
+  box-shadow:
+    0 10px 28px rgba(255,140,40,.65),
+    inset 0 -2px 6px rgba(160,60,0,.5);
+}
+
+button:active{
+  transform:scale(.97);
+}
+</style>
+
 </style>
 </head>
 

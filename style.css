@@ -89,29 +89,6 @@ body {
     box-shadow: 0 8px 20px rgba(255,72,0,0.35);
 }
 
-/* ================= REQUEST BUTTON ================= */
-.request-box {
-    margin: 25px 0;
-    display: flex;
-    justify-content: center;
-}
-
-.request-btn {
-    text-decoration: none;
-    font-size: 18px;
-    color: white;
-    background: rgba(0,0,0,0.25);
-    padding: 8px 22px;
-    border-radius: 20px;
-    transition: 0.3s ease;
-}
-
-.request-btn:hover {
-    background: rgba(0,0,0,0.4);
-    transform: scale(1.05);
-}
-
-
 
 /* ================= FOOTER ================= */
 .site-footer {
@@ -1215,4 +1192,102 @@ h2 {
     box-shadow:
         0 0 8px rgba(0, 170, 255, 0.6),
         0 0 20px rgba(0, 170, 255, 0.9);
+}
+.profile-card {
+  width: 320px;
+  background: #0b0b0b;
+  border-radius: 16px;
+  color: white;
+  overflow: hidden;
+  font-family: sans-serif;
+  box-shadow: 0 0 25px rgba(0,150,255,.2);
+}
+
+/* Cover */
+.cover {
+  height: 90px;
+  background: linear-gradient(120deg, #00c6ff, #0072ff);
+}
+
+/* Main row */
+.profile-main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px;
+  margin-top: -32px;
+}
+
+.avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 3px solid #000;
+  background: #111;
+}
+
+.username {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.badge {
+  font-size: 12px;
+  color: #00c6ff;
+}
+
+/* Bio */
+.bio {
+  padding: 10px 16px;
+  font-size: 13px;
+  opacity: .9;
+}
+
+/* Stats */
+.stats {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  border-top: 1px solid #222;
+}
+
+.stats div {
+  text-align: center;
+}
+
+.stats span {
+  font-size: 16px;
+  font-weight: bold;
+  color: #00c6ff;
+}
+
+.stats small {
+  display: block;
+  font-size: 11px;
+  opacity: .7;
+}
+
+/* Button */
+.action-btn {
+  width: calc(100% - 32px);
+  margin: 12px 16px 16px;
+  padding: 10px;
+  background: #00c6ff;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+}
+.profile-card{
+  max-width: 900px;      /* 👈 bada */
+  margin: 40px auto;
+  background: #0b0b0b;
+  border-radius: 20px;
+  color: white;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(0,150,255,.25);
+}
+.cover{
+  height: 220px;   /* 👈 pehle 90px tha */
+  background: linear-gradient(120deg,#00c6ff,#0072ff);
+  position: relative;
 }
