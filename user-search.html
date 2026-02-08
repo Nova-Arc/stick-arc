@@ -6,7 +6,7 @@
 <link rel="icon" href="favicon.ico.png">
 <style>
 /* ===================== */
-/* 🔥 GOLDEN FIRE – FULL MOBILE SEARCH */
+/* 🔥 GOLDEN FIRE — PERFECT MOBILE FIT */
 /* ===================== */
 
 *{
@@ -17,41 +17,43 @@
   font-family:'Poppins',system-ui,-apple-system,BlinkMacSystemFont;
 }
 
+html,body{
+  width:100%;
+  height:100%;
+}
+
 body{
-  min-height:100vh;
   display:flex;
   justify-content:center;
   align-items:center;
   background:
     radial-gradient(circle at top, rgba(255,190,90,.35), transparent 55%),
     radial-gradient(circle at bottom, rgba(255,110,0,.45), transparent 60%),
-    linear-gradient(180deg,#070200,#140800,#050200);
+    linear-gradient(180deg,#060200,#140800,#050200);
   color:#fff;
 }
 
-/* 🔍 SEARCH BOX — BIG & MOBILE */
+/* 🔍 SEARCH BOX — EXACT MOBILE FIT */
 .box{
-  width:92vw;                 /* almost full mobile */
-  max-width:420px;
-  padding:38px 26px 42px;
-  border-radius:26px;
+  width:100vw;            /* 👈 full width */
+  min-height:100vh;       /* 👈 full height */
+  padding:42px 22px 36px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
   text-align:center;
 
   background:
-    linear-gradient(180deg, rgba(45,22,6,.95), rgba(18,8,2,.97));
-
-  border:1px solid rgba(255,180,90,.45);
+    linear-gradient(180deg, rgba(45,22,6,.96), rgba(18,8,2,.98));
 
   box-shadow:
-    0 0 40px rgba(255,170,60,.5),
-    0 0 85px rgba(255,120,30,.3),
-    inset 0 0 30px rgba(255,210,130,.18);
+    inset 0 0 35px rgba(255,210,130,.2);
 }
 
 /* 🏷️ TITLE */
 .box h2{
-  margin-bottom:26px;
-  font-size:2rem;
+  margin-bottom:28px;
+  font-size:2.2rem;
   font-weight:800;
   letter-spacing:.6px;
 
@@ -60,27 +62,25 @@ body{
   -webkit-text-fill-color:transparent;
 
   text-shadow:
-    0 0 12px rgba(255,210,130,.9),
-    0 0 28px rgba(255,140,40,1);
+    0 0 14px rgba(255,210,130,.9),
+    0 0 32px rgba(255,140,40,1);
 }
 
-/* ✏️ INPUT — BIG */
+/* ✏️ INPUT */
 .box input{
   width:100%;
-  padding:18px 22px;
-  border-radius:20px;
+  padding:20px 22px;
+  border-radius:22px;
   border:1px solid rgba(255,180,90,.45);
   outline:none;
 
   background:#120700;
   color:#fff;
-  font-size:1.15rem;
+  font-size:1.2rem;
 
   box-shadow:
     inset 0 0 18px rgba(255,140,50,.25),
     0 0 22px rgba(255,120,30,.25);
-
-  transition:.2s ease;
 }
 
 .box input::placeholder{
@@ -91,20 +91,20 @@ body{
 .box input:focus{
   border-color:#ffb347;
   box-shadow:
-    0 0 18px rgba(255,170,60,.9),
-    inset 0 0 20px rgba(255,210,130,.35);
+    0 0 20px rgba(255,170,60,.9),
+    inset 0 0 22px rgba(255,210,130,.35);
 }
 
-/* 🔘 BUTTON — BIG GLOW */
+/* 🔘 BUTTON */
 .box button{
   width:100%;
-  margin-top:26px;
-  padding:20px;
+  margin-top:28px;
+  padding:22px;
   border:none;
-  border-radius:22px;
+  border-radius:24px;
   cursor:pointer;
 
-  font-size:1.3rem;
+  font-size:1.35rem;
   font-weight:800;
   color:#2b1400;
 
@@ -112,39 +112,25 @@ body{
     linear-gradient(180deg,#ffe09a,#ffb13b,#ff7a00);
 
   box-shadow:
-    0 0 26px rgba(255,190,90,1),
-    0 0 60px rgba(255,130,30,1),
+    0 0 28px rgba(255,190,90,1),
+    0 0 65px rgba(255,130,30,1),
     inset 0 -3px 8px rgba(160,60,0,.45);
-
-  transition:transform .15s ease, box-shadow .15s ease;
 }
 
 .box button:active{
   transform:scale(.96);
-  box-shadow:
-    0 0 18px rgba(255,160,60,.9),
-    0 0 36px rgba(255,110,0,.9);
 }
 
 /* ℹ️ HINT */
 .hint{
-  margin-top:18px;
-  font-size:1rem;
+  margin-top:22px;
+  font-size:1.05rem;
   color:#ffd79a;
   opacity:.9;
   text-shadow:0 0 10px rgba(255,170,60,.5);
 }
-
-/* 📱 VERY SMALL PHONES */
-@media(max-width:360px){
-  .box{
-    padding:34px 22px 38px;
-  }
-  .box h2{
-    font-size:1.8rem;
-  }
-}
 </style>
+
 
 </head>
 
