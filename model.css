@@ -18,7 +18,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 30px 0 80px;
+  padding: 20px 0 80px;
 }
 
 /* MAIN CONTAINER */
@@ -62,7 +62,6 @@ body {
   text-decoration: none;
   font-weight: 600;
   text-shadow: 0 0 8px #ff9f00;
-  transition: color 0.3s;
 }
 
 .back-btn:hover {
@@ -72,7 +71,7 @@ body {
 /* TITLE */
 h1 {
   text-align: center;
-  font-size: 2.2rem;
+  font-size: clamp(1.8rem, 4vw, 2.2rem);
   margin-bottom: 6px;
   background: linear-gradient(90deg, #ffb300, #fff1b0, #ff9800);
   -webkit-background-clip: text;
@@ -85,8 +84,7 @@ h1 {
   text-align: center;
   margin-bottom: 26px;
   color: #ffd88a;
-  font-size: 1.05rem;
-  opacity: 0.95;
+  font-size: clamp(0.95rem, 2.5vw, 1.05rem);
 }
 
 /* CHARACTER SECTION */
@@ -96,22 +94,26 @@ h1 {
   margin-bottom: 30px;
 }
 
+/* CHARACTER MEDIA */
 .character-media {
-  display: flex;           /* flex container */
-  justify-content: center; /* horizontal center */
-  align-items: center;     /* vertical center if needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 18px;
 }
 
 .character-media img {
-  max-width: 40%;
+  width: min(85%, 360px); /* 🔥 responsive magic */
+  height: auto;
   border-radius: 20px;
   box-shadow: 0 0 25px rgba(255,170,0,0.6);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-
-
+.character-media img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 35px rgba(255,190,0,0.85);
+}
 
 /* CHARACTER INFO */
 .character-info h2 {
@@ -130,6 +132,7 @@ h1 {
   color: #ffe7b3;
 }
 
+/* LIST */
 .character-info ul {
   margin: 10px 0 15px 20px;
 }
@@ -139,14 +142,12 @@ h1 {
   list-style: none;
   position: relative;
   padding-left: 22px;
-  color: #ffe4a0;
 }
 
 .character-info ul li::before {
   content: "🔥";
   position: absolute;
   left: 0;
-  top: 0;
 }
 
 /* TAGS */
@@ -178,32 +179,20 @@ h1 {
   color: #2b1500;
   background: linear-gradient(135deg, #ffd65a, #ff9800);
   box-shadow: 0 0 16px rgba(255,170,0,0.9);
-  transition: all 0.3s ease;
+  transition: 0.3s ease;
 }
 
 .download-btn:hover {
-  transform: scale(1.04);
-  box-shadow: 
+  transform: scale(1.05);
+  box-shadow:
     0 0 28px rgba(255,210,0,1),
     0 0 45px rgba(255,140,0,0.9);
 }
 
-/* MOBILE RESPONSIVE */
-@media(max-width:600px) {
+/* MOBILE */
+@media (max-width: 600px) {
   .container {
-    padding: 25px;
-  }
-
-  h1 {
-    font-size: 1.8rem;
-  }
-
-  .subtitle {
-    font-size: 0.95rem;
-  }
-
-  .character-info h2 {
-    font-size: 1.2rem;
+    padding: 22px;
   }
 
   .download-btn {
