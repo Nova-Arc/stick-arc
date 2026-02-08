@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Group Chat</title>
+
+<style>
+/* ===================== */
+/* 🔥 GLOBAL BASE */
+/* ===================== */
+*{
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
+
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont;
+  background:
+    radial-gradient(circle at top, rgba(255,140,40,.18), transparent 45%),
+    radial-gradient(circle at bottom, rgba(255,80,0,.18), transparent 55%),
+    #0b0b0b;
+  color:white;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+/* ===================== */
+/* 🔥 HEADER */
+/* ===================== */
+.header{
+  text-align:center;
+  padding:14px;
+  font-size:18px;
+  font-weight:700;
+  letter-spacing:.6px;
+  background:
+    linear-gradient(180deg, rgba(255,140,40,.25), rgba(0,0,0,.4)),
+    #141414;
+  border-bottom:1px solid rgba(255,160,60,.4);
+  color:#ffd27a;
+  text-shadow:
+    0 0 8px rgba(255,140,40,.8),
+    0 0 18px rgba(255,80,0,.6);
+}
+
+/* ===================== */
+/* 🔥 MESSAGES */
+/* ===================== */
+.messages{
+  flex:1;
+  padding:14px;
+  overflow-y:auto;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+/* ===================== */
+/* 🔥 MESSAGE CARD */
+/* ===================== */
+.msg{
+  max-width:78%;
+  padding:10px 14px;
+  border-radius:18px;
+  position:relative;
+  animation:pop .18s ease;
+}
+
+.msg.me{
+  align-self:flex-end;
+  background:linear-gradient(135deg,#ffb700,#ff5a00);
+  color:#1a0c00;
+}
+
+.msg.other{
+  align-self:flex-start;
+  background:
+    linear-gradient(135deg, rgba(255,140,40,.14), rgba(0,0,0,.45)),
+    #151515;
+  border:1px solid rgba(255,160,60,.35);
+}
+
+/* ===================== */
+/* 🔥 INPUT BOX */
+/* ===================== */
+.input-box{
+  display:flex;
+  gap:8px;
+  padding:10px;
+  background:
+    linear-gradient(180deg, rgba(255,140,40,.15), rgba(0,0,0,.5)),
+    #141414;
+  border-top:1px solid rgba(255,160,60,.4);
+}
+
+.input-box input{
+  flex:1;
+  padding:12px 14px;
+  border-radius:22px;
+  border:none;
+  outline:none;
+  background:#1f1f1f;
+  color:white;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">Hub Chat</div>
+<div class="messages" id="messages"></div>
+
+<div class="input-box">
+  <input id="text" placeholder="Type message">
+  <button id="sendBtn">➤</button>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+<script>
+firebase.initializeApp({
+  apiKey:"AIzaSyAIgpVbHc_xdeTb02V_KE13MvxTmWKOSLM",
+  authDomain:"stickarc-dcbc9.firebaseapp.com",
+  projectId:"stickarc-dcbc9"
+});
+
+const db=firebase.firestore();
+const auth=firebase.auth();
+const box=document.getElementById("messages");
+const input=document.getElementById("text");
+const sendBtn=document.getElementById("sendBtn");
+
+let myUID,replyData=null;
+const today=new Date().toISOString().split('T')[0];
+const col=db.collection("groupMessages_"+today);
+
+auth.onAuthStateChanged(u=>{
+  if(!u){location.href="login.html";return;}
+  myUID=u.uid;
+  listen();
+});
+
+async function listen(){
+  col.orderBy("createdAt").onSnapshot(async snap=>{
+    box.innerHTML="";
+    for(const d of snap.docs){
+      const m=d.data();
+
+      const div=document.createElement("div");
+      div.className="msg "+(m.senderId===myUID?"me":"other");
+      div.textContent=m.text;
+
+      box.appendChild(div);
+    }
+    box.scrollTop=box.scrollHeight;
+  });
+}
+
+/* 🔥 NEW: AUTO DELETE OLD MESSAGES (KEEP ONLY 20) */
+async function enforce20Limit(){
+  const snap = await col
+    .orderBy("createdAt","desc")
+    .offset(20)
+    .get();
+
+  if(snap.empty) return;
+
+  const batch = db.batch();
+  snap.forEach(doc=>{
+    batch.delete(doc.ref);
+  });
+  await batch.commit();
+}
+
+/* SEND */
+sendBtn.onclick=async()=>{
+  if(!input.value.trim())return;
+
+  await col.add({
+    senderId:myUID,
+    text:input.value,
+    replyTo:replyData,
+    reactions:{},
+    createdAt:firebase.firestore.FieldValue.serverTimestamp()
+  });
+
+  enforce20Limit(); // 🔥 NEW LINE (AUTO CLEAN)
+
+  replyData=null;
+  input.placeholder="Type message";
+  input.value="";
+};
+</script>
+
+</body>
+</html>

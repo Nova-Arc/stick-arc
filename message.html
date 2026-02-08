@@ -2,271 +2,485 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chat | Stick Arc</title>
-<link rel="icon" href="favicon.ico.png">
 
 <style>
+/* 🔥 RESET */
+*{
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
+
+:root{
+  --gold1:#ffb300;
+  --gold2:#ff8c00;
+  --fire:#ff4800;
+  --dark:#0b0b0b;
+  --panel:#151515;
+}
+
+/* 🌌 BODY */
 body{
   margin:0;
-  font-family:Arial;
-  background:#111;
+  font-family:system-ui;
   color:white;
+  height:100vh;
   display:flex;
   flex-direction:column;
-  height:100vh;
+  background:
+    radial-gradient(circle at top, rgba(255,140,40,.15), transparent 40%),
+    radial-gradient(circle at bottom, rgba(255,80,0,.1), transparent 45%),
+    #0b0b0b;
 }
+
+/* ================= HEADER ================= */
 .header{
   display:flex;
   align-items:center;
-  gap:10px;
+  gap:12px;
   padding:12px;
-  background:#222;
+  background:linear-gradient(180deg,#171717,#101010);
+  border-bottom:1px solid rgba(255,160,60,.25);
+  box-shadow:0 4px 20px rgba(255,120,0,.25);
 }
+
 .header img{
-  width:42px;
-  height:42px;
+  width:44px;
+  height:44px;
   border-radius:50%;
+  object-fit:cover;
+  border:2px solid var(--gold1);
+  box-shadow:
+    0 0 8px rgba(255,180,80,.9),
+    0 0 18px rgba(255,120,0,.6);
 }
-.status-dot{
-  width:10px;
-  height:10px;
-  border-radius:50%;
-  background:gray;
+
+#userName{
+  font-weight:600;
+  color:#ffd27a;
+  text-shadow:0 0 8px rgba(255,160,60,.6);
 }
+
+/* ================= MENU ================= */
+.menu-wrapper{
+  margin-left:auto;
+  position:relative;
+}
+
+.menu-btn{
+  background:none;
+  border:none;
+  color:#ffd27a;
+  font-size:22px;
+  cursor:pointer;
+}
+
+.menu-dropdown{
+  position:absolute;
+  right:0;
+  top:40px;
+  width:220px;
+  background:linear-gradient(180deg,#1a1a1a,#101010);
+  border-radius:12px;
+  display:none;
+  flex-direction:column;
+  border:1px solid rgba(255,150,50,.3);
+  box-shadow:0 0 25px rgba(255,120,0,.4);
+  overflow:hidden;
+  z-index:100;
+}
+
+.menu-item{
+  padding:12px;
+  cursor:pointer;
+  border-bottom:1px solid rgba(255,150,50,.15);
+}
+
+.menu-item:hover{
+  background:rgba(255,140,40,.18);
+}
+
+.menu-item.danger{
+  color:#ff6a6a;
+}
+
+/* ================= CHAT ================= */
 .messages{
   flex:1;
-  padding:12px;
+  padding:14px;
   overflow-y:auto;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
 }
+
+
+/* MESSAGE BASE */
 .msg{
-  max-width:70%;
+  max-width:78%;
   padding:10px 14px;
-  margin-bottom:8px;
-  border-radius:14px;
+  border-radius:18px;
+  position:relative;
+  animation:pop .2s ease;
+  word-wrap:break-word;
 }
+
+/* 🔥 YOUR MESSAGE */
 .me{
-  background:#ff4800;
-  margin-left:auto;
+  align-self:flex-end;
+  background:linear-gradient(135deg,var(--gold2),var(--fire));
+  color:white;
+  box-shadow:
+    0 0 10px rgba(255,120,0,.7),
+    inset 0 0 6px rgba(255,220,160,.4);
 }
+
+/* 🌑 OTHER MESSAGE */
 .other{
-  background:#333;
+  align-self:flex-start;
+  background:#222;
+  border:1px solid rgba(255,150,50,.2);
+  box-shadow:0 0 12px rgba(0,0,0,.6);
 }
+
+/* ================= REPLY BOX ================= */
+.reply-box{
+  background:rgba(0,0,0,.35);
+  padding:6px;
+  font-size:12px;
+  border-left:3px solid var(--gold1);
+  border-radius:6px;
+  margin-bottom:6px;
+  color:#ffd27a;
+  box-shadow:0 0 10px rgba(255,160,60,.3);
+}
+
+/* ================= TIME ================= */
+.time{
+  font-size:10px;
+  margin-top:4px;
+  text-align:right;
+  color:#ffd27a;
+  opacity:.8;
+  text-shadow:0 0 6px rgba(255,140,40,.6);
+}
+
+/* ================= MESSAGE OPTIONS ================= */
+.msg-options{
+  position:absolute;
+  top:-42px;
+  
+  background:linear-gradient(180deg,#1a1a1a,#0f0f0f);
+  padding:6px;
+  border-radius:12px;
+  display:flex;
+  gap:6px;
+  border:1px solid rgba(255,150,50,.35);
+  box-shadow:0 0 20px rgba(255,120,0,.45);
+}
+/* OPTIONS POSITION BASED ON MESSAGE SIDE */
+.msg-options.left{
+  right:0;
+  left:auto;
+}
+
+.msg-options.right{
+  
+  left:0;
+  right:auto
+}
+
+
+.msg-options button{
+  background:none;
+  border:none;
+  color:#ffd27a;
+  cursor:pointer;
+  font-size:12px;
+}
+
+.msg-options button:hover{
+  color:var(--gold1);
+  text-shadow:0 0 6px rgba(255,180,80,.9);
+}
+
+/* ❤️ REACTION */
+.reaction{
+  margin-left:6px;
+  filter:drop-shadow(0 0 6px rgba(255,100,0,.9));
+}
+
+/* ================= REPLY PREVIEW ================= */
+.reply-preview{
+  background:linear-gradient(90deg,#1a1a1a,#0f0f0f);
+  padding:8px 12px;
+  border-left:4px solid var(--gold1);
+  font-size:13px;
+  display:none;
+  color:#ffd27a;
+  box-shadow:0 -4px 20px rgba(255,120,0,.35);
+}
+
+.reply-preview button{
+  float:right;
+  background:none;
+  border:none;
+  color:var(--gold1);
+  cursor:pointer;
+}
+
+/* ================= INPUT ================= */
 .input-box{
   display:flex;
-  gap:8px;
+  gap:6px;
   padding:10px;
-  background:#222;
+  background:linear-gradient(180deg,#171717,#101010);
+  border-top:1px solid rgba(255,150,50,.25);
+  box-shadow:0 -4px 18px rgba(255,120,0,.25);
 }
+
 input{
   flex:1;
   padding:12px;
-  border-radius:20px;
+  border-radius:22px;
   border:none;
-}
-button{
-  padding:12px 18px;
-  border:none;
-  border-radius:20px;
-  background:#ff4800;
+  background:#222;
   color:white;
+  outline:none;
+  box-shadow:inset 0 0 6px rgba(0,0,0,.7);
 }
-.tick{
-  font-size:12px;
-  opacity:0.8;
-  margin-left:6px;
+
+input::placeholder{
+  color:#aaa;
 }
+
+/* 🚀 SEND BUTTON */
+button.send{
+  background:linear-gradient(135deg,var(--gold2),var(--fire));
+  border:none;
+  color:white;
+  border-radius:50%;
+  padding:10px 14px;
+  cursor:pointer;
+  box-shadow:
+    0 0 10px rgba(255,120,0,.8),
+    inset 0 0 6px rgba(255,220,160,.5);
+}
+
+button.send:hover{
+  transform:scale(1.05);
+}
+
+/* ================= ANIMATION ================= */
+@keyframes pop{
+  from{transform:scale(.95);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+
 </style>
 </head>
 
 <body>
 
 <div class="header">
-  <img id="userPic" src="default-avatar.png">
-  <span id="userName">Loading...</span>
-  <span id="statusDot" class="status-dot"></span>
+  <img id="userPic">
+  <div id="userName">Loading…</div>
+
+  <div class="menu-wrapper">
+    <button class="menu-btn" id="menuBtn">⋮</button>
+    <div class="menu-dropdown" id="chatMenu">
+      <div class="menu-item danger" id="deleteAll">Delete all messages</div>
+    </div>
+  </div>
 </div>
 
 <div class="messages" id="messages"></div>
 
-<div class="input-box">
-  <input id="text" placeholder="Type a message...">
-  <button onclick="send()">Send</button>
+<!-- REPLY PREVIEW -->
+<div class="reply-preview" id="replyPreview">
+  Replying to: <span id="replyText"></span>
+  <button onclick="cancelReply()">✕</button>
 </div>
 
-<audio id="notifySound">
-  <source src="notification.mp3" type="audio/mpeg">
-</audio>
+<div class="input-box">
+  <input id="text" placeholder="Message…">
+  <button class="send" id="sendBtn">➤</button>
+</div>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import {
-  getFirestore, collection, addDoc, query,
-  orderBy, onSnapshot, serverTimestamp,
-  updateDoc, where, getDocs, doc
+  getFirestore, collection, addDoc, query, orderBy,
+  onSnapshot, serverTimestamp, updateDoc,
+  deleteDoc, doc, getDocs, getDoc
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { getAuth, onAuthStateChanged }
+from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 const app = initializeApp({
   apiKey:"AIzaSyAIgpVbHc_xdeTb02V_KE13MvxTmWKOSLM",
   authDomain:"stickarc-dcbc9.firebaseapp.com",
   projectId:"stickarc-dcbc9"
 });
+const db=getFirestore(app);
+const auth=getAuth(app);
 
-const db = getFirestore(app);
-const auth = getAuth(app);
+const otherUsername=new URLSearchParams(location.search).get("to");
 
-const params = new URLSearchParams(location.search);
-const otherUsername = params.get("to");
-
-const messagesBox = document.getElementById("messages");
-const userName = document.getElementById("userName");
-const statusDot = document.getElementById("statusDot");
-const textInput = document.getElementById("text");
-const sound = document.getElementById("notifySound");
+const box=document.getElementById("messages");
+const input=document.getElementById("text");
+const userName=document.getElementById("userName");
+const userPic=document.getElementById("userPic");
+const menuBtn=document.getElementById("menuBtn");
+const chatMenu=document.getElementById("chatMenu");
+const replyPreview=document.getElementById("replyPreview");
+const replyText=document.getElementById("replyText");
 
 let myUID, otherUID, chatId;
-let firstLoad = true;
+let replyingTo=null;
 
-/* 🔐 AUTH */
-onAuthStateChanged(auth, async(user)=>{
-  if(!user){
-    location.href="login.html";
-    return;
-  }
+/* MENU */
+menuBtn.onclick=e=>{
+  e.stopPropagation();
+  chatMenu.style.display=
+    chatMenu.style.display==="flex"?"none":"flex";
+};
+document.body.onclick=()=>chatMenu.style.display="none";
 
-  myUID = user.uid;
+/* AUTH */
+onAuthStateChanged(auth,async user=>{
+  if(!user) return;
+  myUID=user.uid;
 
-  // 🟢 SET MYSELF ONLINE
-  updateDoc(doc(db,"users",myUID),{ online:true });
+  const otherSnap=await getDoc(doc(db,"users",otherUsername));
+  const other=otherSnap.data();
+  otherUID=other.uid;
 
-  window.addEventListener("beforeunload",()=>{
-    updateDoc(doc(db,"users",myUID),{
-      online:false,
-      lastSeen: serverTimestamp()
-    });
-  });
+  userName.textContent=other.username;
+  userPic.src=other.photoURL;
 
-  // 🔍 fetch other user by username
-  const snap = await getDocs(
-    query(collection(db,"users"), where("username","==",otherUsername))
-  );
-
-  if(snap.empty){
-    alert("User not found");
-    return;
-  }
-
-  const otherUser = snap.docs[0].data();
-  otherUID = otherUser.uid;
-  userName.textContent = otherUser.username;
-
-  chatId = [myUID, otherUID].sort().join("_");
-
-  // 🟢 ONLINE / LAST SEEN LISTENER
-  onSnapshot(doc(db,"users",otherUID),(s)=>{
-    if(!s.exists()) return;
-    const d = s.data();
-
-    if(d.online){
-      statusDot.style.background = "limegreen";
-      userName.textContent = otherUser.username;
-    }else{
-      statusDot.style.background = "gray";
-      if(d.lastSeen){
-        const t = d.lastSeen.toDate().toLocaleTimeString([],{
-          hour:"2-digit", minute:"2-digit"
-        });
-        userName.textContent =
-          otherUser.username + " • last seen " + t;
-      }
-    }
-  });
-
-  listenMessages();
-  markSeen();
+  chatId=[myUID,otherUID].sort().join("_");
+  listen();
 });
 
-/* 🔁 LISTEN + 🔔 SOUND */
-function listenMessages(){
-  const q = query(
-    collection(db,"chats",chatId,"messages"),
-    orderBy("createdAt")
-  );
+/* LISTEN */
+function listen(){
+  const q=query(collection(db,"chats",chatId,"messages"),orderBy("createdAt"));
 
-  onSnapshot(q,(snap)=>{
-    messagesBox.innerHTML="";
-
-    if(!firstLoad){
-      snap.docChanges().forEach(c=>{
-        if(
-          c.type==="added" &&
-          c.doc.data().senderId===otherUID
-        ){
-          sound.play();
-        }
-      });
-    }
-    firstLoad=false;
-
+  onSnapshot(q,snap=>{
+    box.innerHTML="";
     snap.forEach(d=>{
-      const m = d.data();
-      const div = document.createElement("div");
-      div.className = "msg " + (m.senderId===myUID?"me":"other");
+      const m=d.data();
+      if(m.deletedFor?.includes(myUID)) return;
 
-      let tick="";
-      if(m.senderId===myUID){
-        if(m.seen) tick="✔✔";
-        else if(m.delivered) tick="✔";
+      if(m.receiverId===myUID && !m.seen){
+        updateDoc(d.ref,{seen:true});
       }
 
-      div.innerHTML = `${m.text}<span class="tick">${tick}</span>`;
-      messagesBox.appendChild(div);
-    });
+      const div=document.createElement("div");
+      div.className="msg "+(m.senderId===myUID?"me":"other");
 
-    messagesBox.scrollTop = messagesBox.scrollHeight;
+      div.innerHTML=`
+        ${m.replyTo?`
+          <div class="reply-box">${m.replyTo.text}</div>
+        `:""}
+        ${m.text}
+        ${m.reaction?`<span class="reaction">${m.reaction}</span>`:""}
+        <div class="time">
+          ${m.senderId===myUID?(m.seen?" ✔✔":" ✔"):""}
+        </div>
+      `;
+
+      div.onclick=()=>options(div,d.id,m);
+      box.appendChild(div);
+    });
+    box.scrollTop=box.scrollHeight;
   });
 }
 
-/* ✔✔ SEEN + UNREAD CLEAR */
-async function markSeen(){
-  const q = query(
-    collection(db,"chats",chatId,"messages"),
-    where("receiverId","==",myUID),
-    where("seen","==",false)
+/* OPTIONS */
+function options(div,id,m){
+  document.querySelectorAll(".msg-options").forEach(e=>e.remove());
+
+  const o=document.createElement("div");
+
+  // 🔥 POV LOGIC
+  // agar message MY hai → options LEFT
+  // agar OTHER ka hai → options RIGHT
+  o.className="msg-options " + (m.senderId===myUID ? "left" : "right");
+
+  const reply=document.createElement("button");
+  reply.textContent="Reply";
+  reply.onclick=()=>{
+    replyingTo=m;
+    replyText.textContent=m.text;
+    replyPreview.style.display="block";
+  };
+
+  ["❤️","😂","👍"].forEach(r=>{
+    const b=document.createElement("button");
+    b.textContent=r;
+    b.onclick=()=>updateDoc(
+      doc(db,"chats",chatId,"messages",id),
+      {reaction:r}
+    );
+    o.appendChild(b);
+  });
+
+  const delMe=document.createElement("button");
+  delMe.textContent="Delete for me";
+  delMe.onclick=()=>updateDoc(
+    doc(db,"chats",chatId,"messages",id),
+    { deletedFor:[...(m.deletedFor||[]),myUID] }
   );
 
-  const snap = await getDocs(q);
-  snap.forEach(d=>{
-    updateDoc(d.ref,{ seen:true, delivered:true });
-  });
+  const delAll=document.createElement("button");
+  delAll.textContent="Delete for all";
+  delAll.onclick=()=>{
+    if(m.senderId!==myUID) return;
+    deleteDoc(doc(db,"chats",chatId,"messages",id));
+  };
+
+  o.append(reply,delMe,delAll);
+  div.appendChild(o);
 }
 
-/* ✉ SEND */
-window.send = async ()=>{
-  const text = textInput.value.trim();
-  if(!text) return;
+
+/* CANCEL REPLY */
+window.cancelReply=()=>{
+  replyingTo=null;
+  replyPreview.style.display="none";
+};
+
+/* DELETE ALL */
+document.getElementById("deleteAll").onclick=async()=>{
+  if(!confirm("Delete all messages?"))return;
+  const snap=await getDocs(collection(db,"chats",chatId,"messages"));
+  snap.forEach(d=>deleteDoc(d.ref));
+};
+
+/* SEND */
+document.getElementById("sendBtn").onclick=async()=>{
+  if(!input.value.trim())return;
 
   await addDoc(collection(db,"chats",chatId,"messages"),{
-    senderId: myUID,
-    receiverId: otherUID,
-    text,
-    createdAt: serverTimestamp(),
-    delivered:false,
-    seen:false
+    senderId:myUID,
+    receiverId:otherUID,
+    text:input.value,
+    replyTo:replyingTo?{
+      text:replyingTo.text,
+      senderId:replyingTo.senderId
+    }:null,
+    createdAt:serverTimestamp(),
+    seen:false,
+    deletedFor:[]
   });
 
-  await addDoc(collection(db,"messages"),{
-    senderId: myUID,
-    receiverId: otherUID,
-    text,
-    timestamp: serverTimestamp(),
-    unread:true,
-    delivered:false,
-    seen:false
-  });
-
-  textInput.value="";
+  input.value="";
+  cancelReply();
 };
 </script>
+
 </body>
 </html>
