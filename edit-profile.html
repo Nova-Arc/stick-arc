@@ -7,7 +7,7 @@
 
 </head>
 <style>
-/* 🌑 RESET + MOBILE BASE */
+/* 🌑 RESET */
 *{
   margin:0;
   padding:0;
@@ -21,118 +21,121 @@ body{
   justify-content:center;
   align-items:center;
   background:
-    radial-gradient(circle at top, rgba(255,180,80,.18), transparent 55%),
-    radial-gradient(circle at bottom, rgba(255,120,0,.22), transparent 60%),
-    #070300;
+    radial-gradient(circle at top, rgba(255,190,90,.25), transparent 55%),
+    radial-gradient(circle at bottom, rgba(255,120,0,.35), transparent 60%),
+    #060200;
   font-family:system-ui,-apple-system,BlinkMacSystemFont;
   color:#ffe9c7;
 }
 
-/* 📦 MAIN BOX */
+/* 📦 BIGGER BOX */
 .box{
-  width:92%;
-  max-width:420px;
-  padding:22px 18px 26px;
-  background:rgba(10,5,0,.72);
-  border-radius:18px;
+  width:96%;
+  max-width:520px;
+  padding:30px 24px 34px;
+  background:rgba(12,6,0,.78);
+  border-radius:22px;
   box-shadow:
-    0 0 25px rgba(255,170,60,.35),
-    0 0 60px rgba(255,120,0,.18),
-    inset 0 0 18px rgba(255,200,120,.12);
-  backdrop-filter:blur(10px);
-  border:1px solid rgba(255,200,120,.25);
+    0 0 35px rgba(255,180,80,.45),
+    0 0 80px rgba(255,120,0,.25),
+    inset 0 0 22px rgba(255,210,130,.18);
+  backdrop-filter:blur(12px);
+  border:1px solid rgba(255,210,130,.35);
 }
 
-/* 🏷️ TITLE */
+/* 🏷️ BIG TITLE */
 .box h2{
   text-align:center;
-  margin-bottom:18px;
-  font-size:1.5rem;
+  margin-bottom:24px;
+  font-size:2rem;
+  letter-spacing:.5px;
   color:#ffd88a;
   text-shadow:
-    0 0 6px rgba(255,200,120,.6),
-    0 0 16px rgba(255,140,40,.8);
+    0 0 10px rgba(255,210,140,.8),
+    0 0 26px rgba(255,140,40,1);
 }
 
-/* 🖼️ PREVIEW IMAGE (TRANSPARENT FRIENDLY) */
+/* 🖼️ BIG IMAGE */
 #preview{
   display:none;
-  width:120px;
-  height:120px;
-  margin:0 auto 16px;
+  width:160px;
+  height:160px;
+  margin:0 auto 22px;
   object-fit:cover;
   border-radius:50%;
   background:transparent;
   filter:
-    drop-shadow(0 0 6px rgba(255,200,120,.7))
-    drop-shadow(0 0 18px rgba(255,140,40,.9))
-    drop-shadow(0 0 35px rgba(255,90,0,.7));
+    drop-shadow(0 0 10px rgba(255,220,140,.9))
+    drop-shadow(0 0 28px rgba(255,150,40,1))
+    drop-shadow(0 0 55px rgba(255,90,0,.9));
 }
 
-/* ✏️ INPUTS */
+/* ✏️ BIG INPUTS */
 input, textarea{
   width:100%;
-  margin-bottom:14px;
-  padding:12px 14px;
-  border-radius:14px;
-  background:rgba(0,0,0,.55);
-  border:1px solid rgba(255,200,120,.25);
-  color:#fff2dc;
-  font-size:.95rem;
+  margin-bottom:20px;
+  padding:16px 18px;
+  border-radius:18px;
+  background:rgba(0,0,0,.6);
+  border:1px solid rgba(255,210,130,.35);
+  color:#fff3dd;
+  font-size:1.15rem;
   outline:none;
   box-shadow:
-    inset 0 0 10px rgba(255,160,60,.15),
-    0 0 12px rgba(255,120,0,.15);
+    inset 0 0 14px rgba(255,170,70,.2),
+    0 0 20px rgba(255,130,30,.2);
 }
 
 input::placeholder,
 textarea::placeholder{
-  color:#c9a36a;
+  color:#d6b27a;
+  font-size:1.05rem;
 }
 
-/* ✍️ TEXTAREA */
+/* ✍️ BIG TEXTAREA */
 textarea{
   resize:none;
-  min-height:90px;
+  min-height:130px;
 }
 
-/* 🔘 BUTTON */
+/* 🔘 BIG BUTTON */
 button{
   width:100%;
-  margin-top:6px;
-  padding:13px;
+  margin-top:10px;
+  padding:18px;
   border:none;
-  border-radius:16px;
-  font-size:1rem;
-  font-weight:600;
+  border-radius:20px;
+  font-size:1.25rem;
+  font-weight:700;
   color:#2b1500;
   background:
-    linear-gradient(145deg,#ffcf7a,#ff9c2a);
+    linear-gradient(145deg,#ffd98c,#ff9c2a);
   box-shadow:
-    0 0 12px rgba(255,180,80,.8),
-    0 0 30px rgba(255,120,0,.8),
-    inset 0 0 10px rgba(255,255,255,.35);
+    0 0 18px rgba(255,190,90,1),
+    0 0 45px rgba(255,130,30,1),
+    inset 0 0 14px rgba(255,255,255,.4);
   cursor:pointer;
   transition:transform .15s ease, box-shadow .15s ease;
 }
 
 button:active{
-  transform:scale(.97);
+  transform:scale(.96);
   box-shadow:
-    0 0 8px rgba(255,160,60,.7),
-    0 0 18px rgba(255,100,0,.7);
+    0 0 14px rgba(255,170,60,.9),
+    0 0 30px rgba(255,110,0,.9);
 }
 
-/* 📱 EXTRA SMALL SCREENS */
+/* 📱 VERY SMALL SCREENS */
 @media(max-width:360px){
   .box{
-    padding:18px 14px 22px;
+    padding:26px 20px 30px;
   }
   .box h2{
-    font-size:1.35rem;
+    font-size:1.8rem;
   }
 }
 </style>
+
 
 <body>
 
@@ -255,4 +258,3 @@ saveBtn.onclick = async ()=>{
 
 </body>
 </html>
-
