@@ -4,278 +4,250 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chat | Stick Arc</title>
-
-<style>
-/* 🔥 RESET */
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>/* ===== RESET ===== */
 *{
-  box-sizing:border-box;
-  -webkit-tap-highlight-color:transparent;
-}
-
-:root{
-  --gold1:#ffb300;
-  --gold2:#ff8c00;
-  --fire:#ff4800;
-  --dark:#0b0b0b;
-  --panel:#151515;
-}
-
-/* 🌌 BODY */
-body{
   margin:0;
-  font-family:system-ui;
-  color:white;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background: radial-gradient(circle at top,#2a1400,#070300 70%);
+  color:#ffdca8;
   height:100vh;
   display:flex;
   flex-direction:column;
-  background:
-    radial-gradient(circle at top, rgba(255,140,40,.15), transparent 40%),
-    radial-gradient(circle at bottom, rgba(255,80,0,.1), transparent 45%),
-    #0b0b0b;
+  overflow:hidden;
 }
 
-/* ================= HEADER ================= */
+/* ===== HEADER ===== */
 .header{
   display:flex;
   align-items:center;
   gap:12px;
-  padding:12px;
-  background:linear-gradient(180deg,#171717,#101010);
-  border-bottom:1px solid rgba(255,160,60,.25);
-  box-shadow:0 4px 20px rgba(255,120,0,.25);
+  padding:12px 15px;
+
+  backdrop-filter: blur(14px);
+  background: rgba(25,12,0,0.65);
+
+  border-bottom:1px solid rgba(255,180,60,0.2);
+
+  box-shadow:0 0 20px rgba(255,140,0,0.2);
 }
 
 .header img{
-  width:44px;
-  height:44px;
+  width:42px;
+  height:42px;
   border-radius:50%;
   object-fit:cover;
-  border:2px solid var(--gold1);
-  box-shadow:
-    0 0 8px rgba(255,180,80,.9),
-    0 0 18px rgba(255,120,0,.6);
+
+  box-shadow:0 0 15px rgba(255,170,0,0.6);
 }
 
 #userName{
   font-weight:600;
-  color:#ffd27a;
-  text-shadow:0 0 8px rgba(255,160,60,.6);
+  font-size:15px;
+  flex:1;
+  color:#ffcc66;
+  text-shadow:0 0 6px rgba(255,170,0,0.7);
 }
 
-/* ================= MENU ================= */
+/* ===== MENU ===== */
 .menu-wrapper{
-  margin-left:auto;
   position:relative;
 }
 
 .menu-btn{
   background:none;
   border:none;
+  font-size:20px;
   color:#ffd27a;
-  font-size:22px;
   cursor:pointer;
 }
 
 .menu-dropdown{
   position:absolute;
+  top:35px;
   right:0;
-  top:40px;
-  width:220px;
-  background:linear-gradient(180deg,#1a1a1a,#101010);
-  border-radius:12px;
   display:none;
   flex-direction:column;
-  border:1px solid rgba(255,150,50,.3);
-  box-shadow:0 0 25px rgba(255,120,0,.4);
+  min-width:160px;
+
+  backdrop-filter: blur(15px);
+  background: rgba(30,15,0,0.85);
+
+  border:1px solid rgba(255,180,60,0.25);
+  border-radius:12px;
   overflow:hidden;
-  z-index:100;
+
+  box-shadow:0 0 20px rgba(255,140,0,0.3);
 }
 
 .menu-item{
-  padding:12px;
+  padding:10px 14px;
   cursor:pointer;
-  border-bottom:1px solid rgba(255,150,50,.15);
+  font-size:13px;
 }
 
 .menu-item:hover{
-  background:rgba(255,140,40,.18);
+  background:rgba(255,140,0,0.15);
 }
 
 .menu-item.danger{
-  color:#ff6a6a;
+  color:#ff7676;
 }
 
-/* ================= CHAT ================= */
+/* ===== MESSAGES AREA ===== */
 .messages{
   flex:1;
-  padding:14px;
   overflow-y:auto;
+  padding:15px;
   display:flex;
   flex-direction:column;
   gap:10px;
 }
 
-
-/* MESSAGE BASE */
+/* ===== MESSAGE BUBBLES ===== */
 .msg{
-  max-width:78%;
+  max-width:75%;
   padding:10px 14px;
   border-radius:18px;
   position:relative;
-  animation:pop .2s ease;
+  font-size:14px;
+  line-height:1.4;
   word-wrap:break-word;
 }
 
-/* 🔥 YOUR MESSAGE */
-.me{
+/* MY MESSAGE */
+.msg.me{
   align-self:flex-end;
-  background:linear-gradient(135deg,var(--gold2),var(--fire));
-  color:white;
-  box-shadow:
-    0 0 10px rgba(255,120,0,.7),
-    inset 0 0 6px rgba(255,220,160,.4);
+  background:linear-gradient(135deg,#ffcc00,#ff6a00);
+  color:#000;
+  box-shadow:0 0 15px rgba(255,150,40,0.7);
 }
 
-/* 🌑 OTHER MESSAGE */
-.other{
+/* OTHER MESSAGE */
+.msg.other{
   align-self:flex-start;
-  background:#222;
-  border:1px solid rgba(255,150,50,.2);
-  box-shadow:0 0 12px rgba(0,0,0,.6);
+  background:rgba(40,20,0,0.8);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,180,60,0.2);
+  box-shadow:0 0 12px rgba(255,120,0,0.2);
 }
 
-/* ================= REPLY BOX ================= */
-.reply-box{
-  background:rgba(0,0,0,.35);
-  padding:6px;
-  font-size:12px;
-  border-left:3px solid var(--gold1);
-  border-radius:6px;
-  margin-bottom:6px;
-  color:#ffd27a;
-  box-shadow:0 0 10px rgba(255,160,60,.3);
-}
-
-/* ================= TIME ================= */
+/* ===== TIME ===== */
 .time{
   font-size:10px;
   margin-top:4px;
+  opacity:0.7;
   text-align:right;
-  color:#ffd27a;
-  opacity:.8;
-  text-shadow:0 0 6px rgba(255,140,40,.6);
 }
 
-/* ================= MESSAGE OPTIONS ================= */
+/* ===== REACTION ===== */
+.reaction{
+  position:absolute;
+  bottom:-10px;
+  right:-5px;
+  font-size:14px;
+}
+
+/* ===== REPLY BOX INSIDE MESSAGE ===== */
+.reply-box{
+  font-size:11px;
+  padding:6px 8px;
+  margin-bottom:5px;
+  border-left:3px solid #ffb347;
+  background:rgba(255,180,0,0.1);
+  border-radius:8px;
+}
+
+/* ===== OPTIONS POPUP ===== */
 .msg-options{
   position:absolute;
-  top:-42px;
-  
-  background:linear-gradient(180deg,#1a1a1a,#0f0f0f);
-  padding:6px;
-  border-radius:12px;
+  top:-40px;
   display:flex;
   gap:6px;
-  border:1px solid rgba(255,150,50,.35);
-  box-shadow:0 0 20px rgba(255,120,0,.45);
+  padding:6px;
+  border-radius:20px;
+
+  backdrop-filter:blur(15px);
+  background:rgba(30,15,0,0.9);
+  border:1px solid rgba(255,180,60,0.25);
+
+  box-shadow:0 0 20px rgba(255,140,0,0.3);
 }
-/* OPTIONS POSITION BASED ON MESSAGE SIDE */
+
 .msg-options.left{
-  right:0;
-  left:auto;
+  left:0;
 }
 
 .msg-options.right{
-  
-  left:0;
-  right:auto
+  right:0;
 }
 
-
 .msg-options button{
-  background:none;
   border:none;
+  background:none;
   color:#ffd27a;
   cursor:pointer;
   font-size:12px;
 }
 
-.msg-options button:hover{
-  color:var(--gold1);
-  text-shadow:0 0 6px rgba(255,180,80,.9);
-}
-
-/* ❤️ REACTION */
-.reaction{
-  margin-left:6px;
-  filter:drop-shadow(0 0 6px rgba(255,100,0,.9));
-}
-
-/* ================= REPLY PREVIEW ================= */
+/* ===== REPLY PREVIEW ===== */
 .reply-preview{
-  background:linear-gradient(90deg,#1a1a1a,#0f0f0f);
-  padding:8px 12px;
-  border-left:4px solid var(--gold1);
-  font-size:13px;
   display:none;
-  color:#ffd27a;
-  box-shadow:0 -4px 20px rgba(255,120,0,.35);
+  padding:8px 12px;
+  font-size:12px;
+  background:rgba(255,180,0,0.1);
+  border-top:1px solid rgba(255,180,60,0.2);
 }
 
 .reply-preview button{
   float:right;
   background:none;
   border:none;
-  color:var(--gold1);
+  color:#ff6a00;
   cursor:pointer;
 }
 
-/* ================= INPUT ================= */
+/* ===== INPUT BOX ===== */
 .input-box{
   display:flex;
-  gap:6px;
   padding:10px;
-  background:linear-gradient(180deg,#171717,#101010);
-  border-top:1px solid rgba(255,150,50,.25);
-  box-shadow:0 -4px 18px rgba(255,120,0,.25);
+  gap:10px;
+
+  backdrop-filter: blur(14px);
+  background: rgba(25,12,0,0.75);
+
+  border-top:1px solid rgba(255,180,60,0.2);
 }
 
-input{
+.input-box input{
   flex:1;
-  padding:12px;
-  border-radius:22px;
-  border:none;
-  background:#222;
-  color:white;
-  outline:none;
-  box-shadow:inset 0 0 6px rgba(0,0,0,.7);
-}
-
-input::placeholder{
-  color:#aaa;
-}
-
-/* 🚀 SEND BUTTON */
-button.send{
-  background:linear-gradient(135deg,var(--gold2),var(--fire));
-  border:none;
-  color:white;
-  border-radius:50%;
   padding:10px 14px;
+  border-radius:25px;
+  border:1px solid rgba(255,180,60,0.3);
+  background:#140900;
+  color:#ffdca8;
+  outline:none;
+}
+
+.send{
+  width:42px;
+  border:none;
+  border-radius:50%;
+  background:linear-gradient(135deg,#ffcc00,#ff6a00);
+  color:#000;
+  font-size:16px;
   cursor:pointer;
-  box-shadow:
-    0 0 10px rgba(255,120,0,.8),
-    inset 0 0 6px rgba(255,220,160,.5);
+  box-shadow:0 0 15px rgba(255,140,0,0.8);
 }
 
-button.send:hover{
-  transform:scale(1.05);
-}
-
-/* ================= ANIMATION ================= */
-@keyframes pop{
-  from{transform:scale(.95);opacity:0}
-  to{transform:scale(1);opacity:1}
+.send:active{
+  transform:scale(0.9);
 }
 
 </style>
@@ -358,7 +330,10 @@ onAuthStateChanged(auth,async user=>{
   otherUID=other.uid;
 
   userName.textContent=other.username;
-  userPic.src=other.photoURL;
+  userPic.src = other.photoURL && other.photoURL.trim() !== ""
+  ? other.photoURL
+  : "default-avatar.png";
+
 
   chatId=[myUID,otherUID].sort().join("_");
   listen();
