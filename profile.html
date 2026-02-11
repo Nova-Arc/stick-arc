@@ -4,159 +4,162 @@
 <meta charset="UTF-8">
 <title>User Profile | Stick Arc</title>
 <link rel="icon" href="favicon.ico.png">
-<style>
-/* 🌑 RESET */
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>/* ===== RESET ===== */
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  -webkit-tap-highlight-color:transparent;
-}
-
-html,body{
-  width:100%;
-  height:100%;
 }
 
 body{
+  font-family:'Poppins',sans-serif;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
   background:
-    radial-gradient(circle at top, rgba(255,200,100,.3), transparent 55%),
-    radial-gradient(circle at bottom, rgba(255,120,0,.4), transparent 60%),
-    #040100;
-  font-family:system-ui,-apple-system,BlinkMacSystemFont;
-  color:#ffe8c6;
-  overflow-x:hidden;
+    radial-gradient(circle at top,#2a1400,#070300 70%);
+  color:#ffdca8;
+  padding:20px;
 }
 
-/* 🪪 PROFILE CARD — TRUE MOBILE FIT */
+/* ===== PROFILE CARD ===== */
 .profile-card{
   width:100%;
-  min-height:100svh;           /* ✅ mobile browser safe */
-  background:rgba(12,6,0,.9);
-  display:flex;
-  flex-direction:column;
-  padding-bottom:env(safe-area-inset-bottom);
+  max-width:420px;
+  border-radius:22px;
+  overflow:hidden;
+
+  backdrop-filter: blur(18px);
+  background: rgba(20,10,0,0.65);
+
+  border:1px solid rgba(255,190,60,0.25);
 
   box-shadow:
-    inset 0 0 35px rgba(255,220,140,.25),
-    0 0 60px rgba(255,170,70,.6);
+    0 0 25px rgba(255,150,40,0.35),
+    inset 0 0 25px rgba(255,120,0,0.15);
+
+  position:relative;
 }
 
-/* 🖼️ COVER */
+/* ===== COVER ===== */
 .cover{
-  height:200px;
-  background:linear-gradient(135deg,#ffcf73,#ff8c1a);
+  height:140px;
+  background:
+    linear-gradient(135deg,#ffcc00,#ff5a00);
   box-shadow:
-    inset 0 0 45px rgba(255,255,255,.3),
-    0 0 45px rgba(255,140,40,1);
+    0 0 30px rgba(255,120,0,0.7);
 }
 
-/* 👤 PROFILE MAIN */
+/* ===== PROFILE MAIN ===== */
 .profile-main{
   display:flex;
   align-items:center;
-  gap:20px;
-  padding:26px 20px 10px;
+  gap:15px;
+  padding:0 20px;
+  margin-top:-55px;
 }
 
-/* 👑 AVATAR — TRANSPARENT FRIENDLY */
+/* ===== AVATAR ===== */
 .avatar{
-  width:140px;
-  height:140px;
+  width:110px;
+  height:110px;
   border-radius:50%;
   object-fit:cover;
-  background:transparent;
 
-  filter:
-    drop-shadow(0 0 16px rgba(255,220,140,1))
-    drop-shadow(0 0 38px rgba(255,150,40,1))
-    drop-shadow(0 0 70px rgba(255,90,0,1));
+  border:4px solid #120600;
+
+  box-shadow:
+    0 0 25px rgba(255,170,0,0.8),
+    0 0 45px rgba(255,90,0,0.5);
+
+  background:#000;
 }
 
-/* 🧾 TEXT */
+/* ===== TEXT AREA ===== */
 .text{
-  display:flex;
-  flex-direction:column;
-  gap:10px;
+  flex:1;
 }
 
-/* 🏷️ USERNAME */
 .username{
-  font-size:2.1rem;
-  font-weight:900;
-  line-height:1.1;
-  color:#ffd98a;
+  font-size:20px;
+  font-weight:700;
+  color:#ffcc66;
   text-shadow:
-    0 0 14px rgba(255,210,130,1),
-    0 0 36px rgba(255,140,40,1);
+    0 0 8px rgba(255,170,0,0.8);
 }
 
-/* 🎖️ BADGE */
 .badge{
-  padding:7px 16px;
-  border-radius:18px;
-  font-size:1rem;
-  font-weight:800;
-  color:#2b1500;
-  background:linear-gradient(145deg,#ffe7a8,#ffb13b);
-  box-shadow:
-    0 0 16px rgba(255,190,90,1),
-    0 0 30px rgba(255,130,30,1);
+  display:inline-block;
+  margin-top:6px;
+  font-size:12px;
+  padding:5px 12px;
+  border-radius:20px;
+
+  background:linear-gradient(135deg,#ffcc00,#ff6a00);
+  color:#000;
+  font-weight:600;
+
+  box-shadow:0 0 12px rgba(255,140,0,0.8);
 }
 
-/* 📝 BIO */
+/* ===== BIO ===== */
 .bio{
-  margin:18px 20px;
-  padding:22px;
-  font-size:1.2rem;
+  padding:18px 20px;
+  font-size:14px;
   line-height:1.6;
-  flex-grow:1;
-
-  background:rgba(0,0,0,.65);
-  border-radius:22px;
-  border:1px solid rgba(255,210,130,.4);
-
-  box-shadow:
-    inset 0 0 22px rgba(255,170,70,.25),
-    0 0 30px rgba(255,130,30,.35);
+  color:#ffdca8;
+  opacity:0.85;
 }
 
-/* 🔘 ACTION BUTTON */
+/* ===== BUTTON ===== */
 .action-btn{
-  margin:0 20px 24px;
-  padding:22px;
+  margin:0 20px 25px;
+  width:calc(100% - 40px);
+  padding:13px;
   border:none;
-  border-radius:28px;
-  font-size:1.35rem;
-  font-weight:900;
-  color:#2b1500;
+  border-radius:30px;
+  font-weight:600;
+  cursor:pointer;
 
-  background:linear-gradient(145deg,#ffd98c,#ff9c2a);
+  background:linear-gradient(135deg,#ffcc00,#ff5a00);
+  color:#000;
+
   box-shadow:
-    0 0 28px rgba(255,190,90,1),
-    0 0 65px rgba(255,130,30,1),
-    inset 0 0 18px rgba(255,255,255,.45);
+    0 0 18px rgba(255,140,0,0.8);
+
+  transition:0.3s ease;
 }
 
 .action-btn:active{
-  transform:scale(.96);
+  transform:scale(0.97);
 }
 
-/* 📱 SMALL PHONES */
-@media(max-width:360px){
+.action-btn:hover{
+  box-shadow:
+    0 0 28px rgba(255,160,0,1);
+}
+
+/* ===== MOBILE TWEAK ===== */
+@media(max-width:380px){
+  .profile-main{
+    flex-direction:column;
+    text-align:center;
+    margin-top:-60px;
+  }
+
   .avatar{
-    width:120px;
-    height:120px;
+    width:95px;
+    height:95px;
   }
+
   .username{
-    font-size:1.85rem;
-  }
-  .bio{
-    font-size:1.1rem;
+    font-size:18px;
   }
 }
 </style>
-
 
 
 
