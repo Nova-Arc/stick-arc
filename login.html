@@ -79,7 +79,7 @@ async function redirectAfterLogin(user){
     location.href = "username.html";
   }else{
     const username = snap.docs[0].id;
-    location.href = "own-profile.html?u=" + username;
+    location.href = "profile.html?u=" + username;
   }
 }
 
