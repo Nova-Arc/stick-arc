@@ -4,131 +4,129 @@
 <meta charset="UTF-8">
 <title>Search User | Stick Arc</title>
 <link rel="icon" href="favicon.ico.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
-/* ===================== */
-/* 🔥 GOLDEN FIRE — PERFECT MOBILE FIT */
-/* ===================== */
-
-*{
+<style>
+/* ===== RESET ===== */
+* {
   margin:0;
   padding:0;
   box-sizing:border-box;
-  -webkit-tap-highlight-color:transparent;
-  font-family:'Poppins',system-ui,-apple-system,BlinkMacSystemFont;
+  font-family:'Poppins',sans-serif;
 }
 
-html,body{
-  width:100%;
-  height:100%;
-}
-
-body{
+body {
+  min-height:100vh;
+  padding:20px;
+  background: radial-gradient(circle at top,#2b1400,#070300 70%);
+  color:#ffdca8;
   display:flex;
   justify-content:center;
   align-items:center;
-  background:
-    radial-gradient(circle at top, rgba(255,190,90,.35), transparent 55%),
-    radial-gradient(circle at bottom, rgba(255,110,0,.45), transparent 60%),
-    linear-gradient(180deg,#060200,#140800,#050200);
-  color:#fff;
 }
 
-/* 🔍 SEARCH BOX — EXACT MOBILE FIT */
-.box{
-  width:100vw;            /* 👈 full width */
-  min-height:100vh;       /* 👈 full height */
-  padding:42px 22px 36px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
+/* ===== CONTAINER BOX ===== */
+.box {
+  width:90%;
+  max-width:400px;
+  padding:30px 25px;
+  border-radius:25px;
+  background:rgba(25,12,0,0.75);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border:1px solid rgba(255,180,60,0.25);
+  box-shadow: 
+    0 0 35px rgba(255,150,40,0.35),
+    inset 0 0 25px rgba(255,120,0,0.15);
   text-align:center;
-
-  background:
-    linear-gradient(180deg, rgba(45,22,6,.96), rgba(18,8,2,.98));
-
-  box-shadow:
-    inset 0 0 35px rgba(255,210,130,.2);
+  animation:softGlow 4s ease-in-out infinite alternate;
 }
 
-/* 🏷️ TITLE */
-.box h2{
-  margin-bottom:28px;
-  font-size:2.2rem;
-  font-weight:800;
-  letter-spacing:.6px;
+@keyframes softGlow {
+  from{
+    box-shadow:
+      0 0 25px rgba(255,140,0,0.4),
+      inset 0 0 20px rgba(255,120,0,0.2);
+  }
+  to{
+    box-shadow:
+      0 0 55px rgba(255,200,0,0.6),
+      inset 0 0 35px rgba(255,140,0,0.3);
+  }
+}
 
-  background:linear-gradient(90deg,#ffe4a6,#ffae3d,#ffe4a6);
+/* ===== TITLE ===== */
+.box h2 {
+  font-size:24px;
+  margin-bottom:15px;
+  background:linear-gradient(90deg,#ffd700,#ff9a00,#ff4d00);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
-
-  text-shadow:
-    0 0 14px rgba(255,210,130,.9),
-    0 0 32px rgba(255,140,40,1);
+  text-shadow:0 0 20px rgba(255,170,50,0.8);
 }
 
-/* ✏️ INPUT */
-.box input{
+/* ===== INPUT ===== */
+.box input {
   width:100%;
-  padding:20px 22px;
-  border-radius:22px;
-  border:1px solid rgba(255,180,90,.45);
+  padding:12px 15px;
+  border-radius:15px;
+  border:1px solid rgba(255,180,60,0.4);
+  background:rgba(0,0,0,0.4);
+  color:#ffdca8;
+  font-size:14px;
+  margin-bottom:15px;
   outline:none;
-
-  background:#120700;
-  color:#fff;
-  font-size:1.2rem;
-
-  box-shadow:
-    inset 0 0 18px rgba(255,140,50,.25),
-    0 0 22px rgba(255,120,30,.25);
+  box-shadow:inset 0 0 10px rgba(255,150,40,0.2);
+  transition:0.3s;
 }
 
-.box input::placeholder{
-  color:#ffc680;
-  opacity:.75;
+.box input:focus {
+  border:1px solid #ffd700;
+  box-shadow:0 0 15px rgba(255,200,0,0.5), inset 0 0 10px rgba(255,150,0,0.2);
 }
 
-.box input:focus{
-  border-color:#ffb347;
-  box-shadow:
-    0 0 20px rgba(255,170,60,.9),
-    inset 0 0 22px rgba(255,210,130,.35);
-}
-
-/* 🔘 BUTTON */
-.box button{
+/* ===== BUTTON ===== */
+.box button {
   width:100%;
-  margin-top:28px;
-  padding:22px;
+  padding:12px;
   border:none;
-  border-radius:24px;
+  border-radius:25px;
+  background:linear-gradient(135deg,#ffd700,#ff6a00);
+  color:#000;
+  font-weight:600;
+  font-size:14px;
   cursor:pointer;
-
-  font-size:1.35rem;
-  font-weight:800;
-  color:#2b1400;
-
-  background:
-    linear-gradient(180deg,#ffe09a,#ffb13b,#ff7a00);
-
-  box-shadow:
-    0 0 28px rgba(255,190,90,1),
-    0 0 65px rgba(255,130,30,1),
-    inset 0 -3px 8px rgba(160,60,0,.45);
+  box-shadow:0 0 20px rgba(255,150,0,0.8);
+  transition:0.3s ease;
 }
 
-.box button:active{
-  transform:scale(.96);
+.box button:disabled {
+  opacity:0.7;
+  cursor:not-allowed;
 }
 
-/* ℹ️ HINT */
-.hint{
-  margin-top:22px;
-  font-size:1.05rem;
-  color:#ffd79a;
-  opacity:.9;
-  text-shadow:0 0 10px rgba(255,170,60,.5);
+.box button:hover:not(:disabled) {
+  transform:scale(1.05);
+  box-shadow:0 0 35px rgba(255,200,0,1);
 }
+
+/* ===== HINT TEXT ===== */
+.box .hint {
+  font-size:12px;
+  color:#ffe8b0;
+  margin-top:10px;
+  opacity:0.8;
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:500px){
+  .box h2{font-size:20px;}
+  .box input, .box button, .box .hint{font-size:13px;}
+  .box{padding:20px 18px;}
+}
+</style>
+
 </style>
 
 
