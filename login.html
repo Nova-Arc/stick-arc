@@ -1,15 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <link rel="stylesheet" href="atp.css">
+   
 <meta charset="UTF-8">
 <title>Login – Stick Arc</title>
 <link rel="icon" type="image/png" href="favicon.ico.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>/* ===== RESET ===== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Poppins',sans-serif;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+
+  background:
+    radial-gradient(circle at top,#2b1400,#070300 70%);
+  color:#ffdca8;
+}
+
+/* ===== LOGIN CARD ===== */
+.login-card{
+  width:100%;
+  max-width:380px;
+  padding:35px 25px;
+  border-radius:22px;
+  text-align:center;
+
+  backdrop-filter: blur(20px);
+  background: rgba(25,12,0,0.75);
+
+  border:1px solid rgba(255,180,60,0.25);
+
+  box-shadow:
+    0 0 35px rgba(255,150,40,0.4),
+    inset 0 0 25px rgba(255,120,0,0.15);
+}
+
+/* ===== TITLE ===== */
+.login-card h1{
+  font-size:26px;
+  margin-bottom:6px;
+
+  background:linear-gradient(90deg,#ffd700,#ff9a00,#ff4d00);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+  text-shadow:0 0 25px rgba(255,170,50,0.8);
+}
+
+.login-card p{
+  font-size:13px;
+  margin-bottom:25px;
+  opacity:0.85;
+}
+
+/* ===== INPUTS ===== */
+.login-card input{
+  width:100%;
+  padding:13px 15px;
+  margin-bottom:15px;
+  border-radius:30px;
+  border:1px solid rgba(255,180,60,0.3);
+
+  background:rgba(255,180,50,0.08);
+  backdrop-filter:blur(8px);
+
+  color:#ffdca8;
+  font-size:14px;
+  outline:none;
+
+  transition:0.3s;
+}
+
+.login-card input::placeholder{
+  color:#ffb347;
+}
+
+.login-card input:focus{
+  border-color:#ffb347;
+  box-shadow:0 0 18px rgba(255,150,40,0.6);
+}
+
+/* ===== BUTTON BASE ===== */
+.login-card button{
+  width:100%;
+  padding:13px;
+  border:none;
+  border-radius:30px;
+  font-weight:600;
+  font-size:14px;
+  cursor:pointer;
+  margin-bottom:12px;
+  transition:0.3s ease;
+}
+
+/* ===== LOGIN BUTTON ===== */
+.login-btn{
+  background:linear-gradient(135deg,#ffd700,#ff6a00);
+  color:#000;
+  box-shadow:0 0 20px rgba(255,150,0,0.8);
+}
+
+.login-btn:active{
+  transform:scale(0.97);
+}
+
+/* ===== SIGNUP BUTTON ===== */
+.signup-btn{
+  background:rgba(255,180,50,0.1);
+  border:1px solid rgba(255,180,60,0.4);
+  color:#ffd27a;
+}
+
+.signup-btn:hover{
+  background:rgba(255,180,50,0.2);
+}
+
+/* ===== GOOGLE BUTTON ===== */
+.google-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+
+  background:#fff;
+  color:#000;
+  font-weight:500;
+}
+
+.google-btn img{
+  width:18px;
+}
+
+.google-btn:hover{
+  box-shadow:0 0 18px rgba(255,150,0,0.4);
+}
+
+/* ===== FOOTER ===== */
+.login-footer{
+  margin-top:15px;
+  font-size:12px;
+  opacity:0.7;
+}
 
 
+</style>
 
 <body>
 
