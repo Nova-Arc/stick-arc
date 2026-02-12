@@ -294,3 +294,30 @@ body{
 .site-footer a:hover{
   color:#ff7a00;
 }
+/* ================= CENTERED HUB VIDEO SMALLER ================= */
+.video-btn video{
+  width:100px;           /* pehle 140px, chhota */
+  max-width:40%;          /* mobile me scale */
+  height:auto;
+  border-radius:50%;
+  border:2px solid rgba(255,215,0,0.7);
+  box-shadow:
+    0 0 30px rgba(255,215,0,0.8),
+    inset 0 0 15px rgba(255,215,0,0.4);
+  transition:.3s ease;
+}
+
+.video-btn video:hover{
+  transform:scale(1.12);
+  box-shadow:
+    0 0 45px rgba(255,215,0,1),
+    inset 0 0 20px rgba(255,215,0,0.5);
+}
+
+/* MOBILE SPECIFIC */
+@media(max-width:500px){
+  .video-btn video{
+    width:80px;          /* aur chhota mobile pe */
+    max-width:50%;
+  }
+}

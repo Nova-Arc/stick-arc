@@ -75,34 +75,53 @@ body{
 }
 
 /* YT BUTTON CENTER PERFECT */
-.yt-btn{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  width:80px;
-  height:80px;
-  border-radius:50%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:rgba(0,0,0,.45);
-  backdrop-filter:blur(10px);
-  border:1px solid rgba(255,200,100,.6);
-  box-shadow:
-    0 0 25px rgba(255,150,40,.8);
-  transition:.3s;
+/* ===== YT BUTTONS SMALLER ===== */
+.yt-btn {
+  width:60px;   /* pehle 80px */
+  height:60px;  /* pehle 80px */
 }
 
 .yt-btn img{
-  width:42px;
+  width:32px;   /* pehle 42px */
 }
 
-.yt-btn:hover{
+/* PLAY BUTTON SMALLER */
+.play-btn {
+  width:60px;    /* pehle 75px */
+  height:60px;   /* pehle 75px */
+  font-size:26px; /* pehle 32px */
+}
+
+/* HOVER EFFECT SAME */
+.yt-btn:hover {
   transform:translate(-50%,-50%) scale(1.12);
   box-shadow:
     0 0 45px rgba(255,170,50,1);
 }
+
+.play-btn:hover {
+  transform:translate(-50%,-50%) scale(1.15);
+  box-shadow:
+    0 0 45px rgba(255,200,0,1),
+    0 0 80px rgba(255,100,0,.9);
+}
+
+/* MOBILE SPECIFIC */
+@media(max-width:500px){
+  .yt-btn {
+    width:50px;
+    height:50px;
+  }
+  .yt-btn img {
+    width:26px;
+  }
+  .play-btn {
+    width:50px;
+    height:50px;
+    font-size:22px;
+  }
+}
+
 
 /* ===== SEARCH (GLASS INPUT) ===== */
 .search-box{
