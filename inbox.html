@@ -4,10 +4,137 @@
 <meta charset="UTF-8">
 <title>Inbox | Stick Arc</title>
 <link rel="icon" href="favicon.ico.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="atp.css">
 </head>
+<style>
+  /* ===== RESET ===== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
+body{
+  font-family:'Poppins',sans-serif;
+  min-height:100vh;
+  padding:20px;
+
+  background:
+    radial-gradient(circle at top,#2b1400,#070300 70%);
+  color:#ffdca8;
+}
+
+/* ===== CONTAINER ===== */
+.inbox-container{
+  max-width:500px;
+  margin:auto;
+  padding:25px 20px;
+  border-radius:22px;
+
+  backdrop-filter:blur(20px);
+  background:rgba(25,12,0,0.75);
+  border:1px solid rgba(255,180,60,0.25);
+
+  box-shadow:
+    0 0 35px rgba(255,150,40,0.35),
+    inset 0 0 25px rgba(255,120,0,0.15);
+}
+
+/* ===== TITLE ===== */
+.inbox-container h2{
+  text-align:center;
+  margin-bottom:20px;
+  font-size:22px;
+
+  background:linear-gradient(90deg,#ffd700,#ff9a00,#ff4d00);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+  text-shadow:0 0 25px rgba(255,170,50,0.7);
+}
+
+/* ===== MESSAGE LIST ===== */
+#messages{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+/* ===== SINGLE MESSAGE CARD ===== */
+.message{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:12px;
+  border-radius:18px;
+  cursor:pointer;
+
+  background:rgba(255,180,50,0.08);
+  border:1px solid rgba(255,180,60,0.2);
+
+  transition:0.3s ease;
+}
+
+.message:hover{
+  background:rgba(255,180,50,0.15);
+  box-shadow:0 0 20px rgba(255,150,40,0.4);
+  transform:translateY(-2px);
+}
+
+/* ===== PROFILE IMAGE ===== */
+.message img{
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  object-fit:cover;
+
+  border:2px solid rgba(255,180,60,0.5);
+  box-shadow:0 0 15px rgba(255,150,40,0.5);
+}
+
+/* ===== MESSAGE CONTENT ===== */
+.message-content{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+}
+
+.message-content strong{
+  font-size:15px;
+  color:#ffd27a;
+}
+
+.last-text{
+  font-size:13px;
+  opacity:0.75;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+/* ===== UNREAD BADGE ===== */
+.badge{
+  background:linear-gradient(135deg,#ffd700,#ff6a00);
+  color:#000;
+  font-size:12px;
+  font-weight:600;
+  padding:5px 9px;
+  border-radius:20px;
+
+  box-shadow:0 0 15px rgba(255,150,0,0.8);
+}
+
+/* ===== EMPTY STATE ===== */
+#messages p{
+  margin-top:30px;
+  font-size:14px;
+}
+
+
+</style>
 <body>
 
 <div class="inbox-container">
@@ -69,7 +196,7 @@ async function loadInbox(myUID) {
     div.className = "message";
 
     div.innerHTML = `
-      <img src="${sender.photoURL || 'default-avatar.png'}" title="${sender.username}">
+      <img src="${d.photoURL || 'default-avatar.png'}" title="${sender.username}">
       <div class="message-content">
         <strong>${sender.username}</strong>
         <span class="last-text">${msg.text || ""}</span>
