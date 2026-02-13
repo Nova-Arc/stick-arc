@@ -321,3 +321,179 @@ body{
     max-width:50%;
   }
 }
+/* ===== MAIN DOCK ===== */
+.main-dock{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  padding:20px 10px;
+}
+
+/* ===== SECONDARY DOCK ===== */
+.secondary-dock{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
+  padding:15px 10px;
+}
+
+/* DOCK BUTTONS */
+.dock-btn{
+  width:80px;
+  height:80px;
+  border-radius:20px;
+  text-decoration:none;
+  font-size:11px;
+  color:#fff;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+  background:rgba(255,215,0,0.08);
+  backdrop-filter:blur(18px);
+  border:1px solid rgba(255,215,0,0.4);
+  box-shadow:
+    inset 0 0 12px rgba(255,215,0,0.2),
+    0 0 18px rgba(255,215,0,0.25);
+  transition:.3s;
+}
+
+.dock-btn:hover{
+  transform:translateY(-4px) scale(1.05);
+  box-shadow:
+    0 0 35px rgba(255,215,0,0.6);
+}
+
+.dock-btn img{
+  width:28px;
+  margin-bottom:5px;
+}
+
+/* SMALL BUTTONS FOR SECONDARY DOCK */
+.secondary-dock .small-btn{
+  width:65px;
+  height:65px;
+}
+
+.secondary-dock .small-btn img{
+  width:22px;
+  margin-bottom:3px;
+}
+
+/* MOBILE RESPONSIVE */
+@media(max-width:500px){
+  .main-dock, .secondary-dock{
+    gap:10px;
+  }
+
+  .dock-btn{
+    width:65px;
+    height:65px;
+  }
+  .dock-btn img{
+    width:22px;
+    margin-bottom:3px;
+  }
+}
+/* ===== CHARACTER CARDS GOLDEN GLOW ===== */
+.character {
+    position: relative;
+    width:100%;
+    padding:35px;
+    border-radius:20%; /* radius 20% */
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+
+    background: linear-gradient(
+        145deg,
+        rgba(255,215,0,0.08),
+        rgba(255,255,255,0.03)
+    );
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255,215,0,0.5);
+
+    box-shadow:
+        0 0 35px rgba(255,215,0,0.35),  /* golden outer glow */
+        inset 0 0 25px rgba(255,215,0,0.15); /* subtle inner glow */
+    transition: 0.4s;
+}
+
+/* Hover glow intensified */
+.character:hover {
+    transform: translateY(-10px);
+    box-shadow:
+        0 0 60px rgba(255,215,0,0.8),
+        0 0 90px rgba(255,200,50,0.5),
+        inset 0 0 35px rgba(255,215,0,0.25);
+}
+
+/* Text gradient for name (gold effect) */
+.character span {
+    display: block;
+    margin-top: 220px; /* adjust if necessary */
+    font-size: 20px;
+    font-weight: 600;
+    background: linear-gradient(120deg, #fff6cc, #ffd700, #b8860b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 15px rgba(255,215,0,0.7);
+}
+
+/* Images stacking */
+.character img {
+    width: 200px;
+    max-width: 90%;
+    margin-bottom: 20px;
+    transition: 0.4s;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.character .idle {
+    opacity: 1;
+}
+
+.character .hover {
+    opacity: 0;
+}
+
+.character:hover .idle,
+.character:active .idle {
+    opacity: 0;
+}
+
+.character:hover .hover,
+.character:active .hover {
+    opacity: 1;
+}
+/* ===== CHARACTER IMAGE GOLDEN GLOW ===== */
+.character img {
+    width: 200px;
+    max-width: 90%;
+    margin-bottom: 20px;
+    transition: 0.4s;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+    /* ✅ Rounded corners for images */
+    border-radius: 20%;
+
+    /* ✅ Golden glow */
+    box-shadow:
+        0 0 20px rgba(255,215,0,0.6),   /* outer glow */
+        0 0 40px rgba(255,200,50,0.4),   /* soft halo */
+        inset 0 0 15px rgba(255,215,0,0.2); /* subtle inner glow */
+}
+
+/* Hover pe glow thoda aur strong */
+.character:hover img {
+    box-shadow:
+        0 0 35px rgba(255,215,0,0.9),
+        0 0 60px rgba(255,200,50,0.6),
+        inset 0 0 20px rgba(255,215,0,0.25);
+}
